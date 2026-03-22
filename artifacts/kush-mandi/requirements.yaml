@@ -1,0 +1,13 @@
+packages:
+  "framer-motion": "For premium cinematic scroll animations, staggered reveals, and interactive hover states"
+  "clsx": "Utility for constructing className strings conditionally"
+  "tailwind-merge": "Utility function to efficiently merge Tailwind CSS classes"
+  "react-hook-form": "For form state management in the reservation modal"
+  "@hookform/resolvers": "For Zod schema validation integration with react-hook-form"
+
+images: []
+
+notes:
+  - "The app functions as a static frontend marketing site. All data is hardcoded as per instructions."
+  - "The 'Reservation' mutation is mocked to simulate network latency and show a success toast."
+  - "Following the specific request, no external images (like Unsplash) are used. Instead, a stunning custom <GradientArt /> component is built to simulate abstract, premium food photography using CSS grain, radial gradients, and Framer Motion."
