@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Menu, X, MapPin, Phone, Clock, Star, Quote, ChevronRight } from "lucide-react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { GradientArt } from "@/components/gradient-art";
 import { ReservationModal } from "@/components/reservation-modal";
@@ -50,6 +51,7 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [reservationOpen, setReservationOpen] = useState(false);
+  const [, navigate] = useLocation();
   
   const { scrollYProgress } = useScroll();
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
@@ -62,7 +64,7 @@ export default function Home() {
 
   const NavLinks = () => (
     <>
-      <a href="#menu" className="text-sm font-medium hover:text-primary transition-colors">Menu</a>
+      <button onClick={() => navigate("/menu")} className="text-sm font-medium hover:text-primary transition-colors">Menu</button>
       <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">About</a>
       <a href="#gallery" className="text-sm font-medium hover:text-primary transition-colors">Gallery</a>
       <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
@@ -153,7 +155,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button size="lg" className="w-full sm:w-auto" onClick={() => document.getElementById('menu')?.scrollIntoView()}>
+            <Button size="lg" className="w-full sm:w-auto" onClick={() => navigate("/menu")}>
               View Menu
             </Button>
             <Button size="lg" variant="outline" className="w-full sm:w-auto" onClick={() => setReservationOpen(true)}>
@@ -207,7 +209,7 @@ export default function Home() {
         </div>
         
         <div className="mt-12 text-center">
-          <Button variant="outline" className="group" onClick={() => document.getElementById('menu')?.scrollIntoView()}>
+          <Button variant="outline" className="group" onClick={() => navigate("/menu")}>
             Explore Full Menu 
             <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
