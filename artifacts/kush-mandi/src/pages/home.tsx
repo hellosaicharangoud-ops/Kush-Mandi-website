@@ -1,17 +1,26 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { Menu, X, MapPin, Phone, Clock, Star, Quote, ChevronRight, CheckCircle2 } from "lucide-react";
+import { Menu, X, MapPin, Phone, Clock, Star, Quote, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GradientArt } from "@/components/gradient-art";
 import { ReservationModal } from "@/components/reservation-modal";
 
-// --- DUMMY DATA ---
-const SIGNATURE_DISHES = [
-  { id: 1, name: "Chicken Mandi", desc: "Tender slow-cooked chicken on fragrant basmati rice, seasoned with our secret spice blend.", price: "₹320", variant: "chicken" },
-  { id: 2, name: "Mutton Mandi", desc: "Premium mutton slow-roasted to perfection on aromatic saffron rice.", price: "₹450", variant: "mutton" },
-  { id: 3, name: "Crispy Fish Fry", desc: "Golden crispy fish coated in a signature Hyderabadi masala blend, fried to perfection.", price: "₹280", variant: "fish" },
-  { id: 4, name: "Signature Prawns", desc: "Jumbo prawns marinated in bold coastal spices and grilled over charcoal.", price: "₹380", variant: "prawns" }
-] as const;
+import imgInterior from "@assets/1000385857_1774209331114.jpg";
+import imgChickenMandi from "@assets/1000385856_1774209331244.jpg";
+import imgMuttonMandi from "@assets/1000385855_1774209331290.jpg";
+import imgExteriorNight from "@assets/1000385854_1774209331354.jpg";
+import imgExteriorSign from "@assets/1000385853_1774209331400.jpg";
+
+type GradientVariant = "chicken" | "mutton" | "fish" | "prawns";
+
+interface Dish {
+  id: number;
+  name: string;
+  desc: string;
+  price: string;
+  variant: GradientVariant;
+  img: string | null;
+}
 
 const REVIEWS = [
   { name: "Rahul S.", role: "IT Professional", text: "Amazing taste, especially the fish fry! Best mandi in Gachibowli." },
@@ -28,6 +37,13 @@ const FEATURES = [
   { icon: "👨‍👩‍👧", title: "Perfect for Groups", desc: "Group-friendly seating for families and friends." },
   { icon: "🪑", title: "Comfortable Space", desc: "Relaxed, warm dining environment." },
   { icon: "⭐", title: "4.0 Rated", desc: "Trusted by over 100 happy diners in Gachibowli." }
+];
+
+const SIGNATURE_DISHES: Dish[] = [
+  { id: 1, name: "Chicken Mandi", desc: "Tender slow-cooked chicken on fragrant basmati rice, seasoned with our secret spice blend.", price: "₹320", variant: "chicken", img: imgChickenMandi },
+  { id: 2, name: "Mutton Mandi", desc: "Premium mutton slow-roasted to perfection on aromatic saffron rice.", price: "₹450", variant: "mutton", img: imgMuttonMandi },
+  { id: 3, name: "Crispy Fish Fry", desc: "Golden crispy fish coated in a signature Hyderabadi masala blend, fried to perfection.", price: "₹280", variant: "fish", img: null },
+  { id: 4, name: "Signature Prawns", desc: "Jumbo prawns marinated in bold coastal spices and grilled over charcoal.", price: "₹380", variant: "prawns", img: null },
 ];
 
 export default function Home() {
@@ -98,7 +114,8 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
-          <GradientArt variant="hero" />
+          <img src={imgExteriorNight} alt="Kush Mandi Restaurant" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background" />
         </motion.div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6 mt-16">
@@ -167,7 +184,16 @@ export default function Home() {
               className="group bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
             >
               <div className="h-48 relative overflow-hidden">
-                <GradientArt variant={dish.variant} className="group-hover:scale-105 transition-transform duration-700" />
+                {dish.img ? (
+                  <img
+                    src={dish.img}
+                    alt={dish.name}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  />
+                ) : (
+                  <GradientArt variant={dish.variant} className="group-hover:scale-105 transition-transform duration-700" />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute top-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 rounded-full text-primary font-bold text-sm">
                   {dish.price}
                 </div>
@@ -278,25 +304,75 @@ export default function Home() {
             <p className="text-muted-foreground max-w-2xl mx-auto">A glimpse into our warm, inviting atmosphere and rich culinary creations.</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[300px]">
-            <div className="col-span-2 row-span-2 rounded-2xl overflow-hidden relative group">
-              <GradientArt variant="ambiance" animate={false} className="group-hover:scale-105 transition-transform duration-1000" />
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[280px]">
+            {/* Large feature: Interior */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="col-span-2 row-span-2 rounded-2xl overflow-hidden relative group cursor-pointer"
+            >
+              <img src={imgInterior} alt="Kush Mandi Dining Area" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="font-display text-3xl font-bold text-white">Warm Ambiance</h3>
+                <h3 className="font-display text-3xl font-bold text-white">Group Dining</h3>
               </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden relative group">
-              <GradientArt variant="chicken" animate={false} className="group-hover:scale-105 transition-transform duration-1000" />
+            </motion.div>
+
+            {/* Chicken Mandi */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="rounded-2xl overflow-hidden relative group cursor-pointer"
+            >
+              <img src={imgChickenMandi} alt="Chicken Mandi" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="font-display text-xl font-bold text-white">Signature Mandi</h3>
+                <h3 className="font-display text-xl font-bold text-white">Chicken Mandi</h3>
               </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden relative group">
-              <GradientArt variant="fish" animate={false} className="group-hover:scale-105 transition-transform duration-1000" />
+            </motion.div>
+
+            {/* Mutton Mandi */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="rounded-2xl overflow-hidden relative group cursor-pointer"
+            >
+              <img src={imgMuttonMandi} alt="Mutton Mandi" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="font-display text-xl font-bold text-white">Fresh Daily</h3>
+                <h3 className="font-display text-xl font-bold text-white">Mutton Mandi</h3>
               </div>
-            </div>
+            </motion.div>
+
+            {/* Exterior Sign 1 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="rounded-2xl overflow-hidden relative group cursor-pointer"
+            >
+              <img src={imgExteriorNight} alt="Kush Mandi at Night" className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-xl font-bold text-white">Our Location</h3>
+              </div>
+            </motion.div>
+
+            {/* Exterior Sign 2 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="col-span-2 md:col-span-1 rounded-2xl overflow-hidden relative group cursor-pointer"
+            >
+              <img src={imgExteriorSign} alt="Kush Mandi Arabian Kitchen" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-xl font-bold text-white">Arabian Kitchen</h3>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
