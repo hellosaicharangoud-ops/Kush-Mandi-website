@@ -41,11 +41,18 @@ interface Dish {
 }
 
 const REVIEWS = [
-  { name: "Rahul S.", role: "IT Professional", text: "Amazing taste, especially the fish fry! Best mandi in Gachibowli." },
-  { name: "Priya M.", role: "Food Blogger", text: "Great food, good ambiance, and very friendly staff. Will come again!" },
-  { name: "Arjun K.", role: "Software Engineer", text: "Best mandi experience at such a reasonable price. Perfect for a group dinner." },
-  { name: "Sneha T.", role: "Teacher", text: "The mutton mandi was absolutely incredible — so tender and flavorful!" },
-  { name: "Vikram R.", role: "Business Owner", text: "Loved the crispy fish fry and the warm atmosphere. My family's new go-to place." }
+  { name: "Rohan Goud", badge: null, when: "1 month ago", text: "I had an amazing experience at Kush Mandi — one of the best Mandi places I've visited recently. The mandi here was richly spiced, perfectly cooked, and incredibly flavorful, with the rice and meat pairing beautifully." },
+  { name: "Sanju Goud", badge: null, when: "8 months ago", text: "I recently dined at Kush Mandi and had an amazing experience. The ambiance was perfect, and the service was top-notch. The food was absolutely delicious, especially the mandi. I highly recommend this place!" },
+  { name: "Tharak K", badge: "Local Guide", when: "5 months ago", text: "Wonderful experience and good quality food and service also. Great value for the price.", spend: "₹1,200–1,400" },
+  { name: "Maroti Harsha", badge: null, when: "5 months ago", text: "Food tastes good. Especially fish fry and crispy fish tastes awesome. Service is too good." },
+  { name: "Anguru Keerthana", badge: null, when: "7 months ago", text: "The food was delicious and the ambience was cool, best place to hang out with friends and family, loved the service too." },
+  { name: "Reva Krishna", badge: null, when: "10 months ago", text: "Must try crispy prawns. Mandi rice and piece was too good. Liked the complimentary soup.", spend: "₹400–600" },
+  { name: "Datta Sapate", badge: null, when: "8 months ago", text: "Very tasty! Visited with my friends. Faham mandi was very tasty 🤤" },
+  { name: "Vijay Mudhiraj", badge: null, when: "8 months ago", text: "Food was delicious. The faham mandi is too tasty — must visit this place!" },
+  { name: "adithya rahul", badge: "Local Guide", when: "1 month ago", text: "Ambience, food, way of speaking — everything is perfect 👌" },
+  { name: "Sariut Molla", badge: null, when: "8 months ago", text: "Must try Mutton Juicy Mandi & peaceful service by Yakub." },
+  { name: "Kushalini", badge: null, when: "7 months ago", text: "Food was very amazingggg! We went with our gang for the first time. They gave discount 😊", spend: "₹1,800–2,000" },
+  { name: "HANUMANTHU SAIKIRAN", badge: "Local Guide", when: "6 months ago", text: "Unexpectedly visited but was satisfied the first time, so have been coming back randomly for the last 2 months.", spend: "₹1,800–2,000" },
 ];
 
 const FEATURES = [
@@ -100,7 +107,9 @@ export default function Home() {
           
           <div className="hidden md:flex items-center gap-8">
             <NavLinks />
-            <Button onClick={() => setReservationOpen(true)} className="rounded-full px-6">
+            <Button 
+              onClick={() => window.open("https://www.google.com/maps/reserve/v/dine/c/GJ5F4uUUYxE?opi=89978449&gei=_cfCacCgJb-SseMPjNTG0AQ&source=pa&hl=en-IN&gei=_cfCacCgJb-SseMPjNTG0AQ&sourceurl=https://www.google.com/search?q%3Dkush%2Bmandi%2Brevies%26oq%3Dkush%2Bmandi%2Brevies%26gs_lcrp%3DEgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCDQyNDlqMGoxqAIAsAIA%26sourceid%3Dchrome%26ie%3DUTF-8", "_blank")}
+              className="rounded-full px-6">
               Reserve a Table
             </Button>
           </div>
@@ -121,7 +130,7 @@ export default function Home() {
             className="fixed inset-0 z-30 bg-background/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 pt-20"
           >
             <NavLinks />
-            <Button onClick={() => { setReservationOpen(true); setMobileMenuOpen(false); }} className="mt-4">
+            <Button onClick={() => { window.open("https://www.google.com/maps/reserve/v/dine/c/GJ5F4uUUYxE?opi=89978449&gei=_cfCacCgJb-SseMPjNTG0AQ&source=pa&hl=en-IN&gei=_cfCacCgJb-SseMPjNTG0AQ&sourceurl=https://www.google.com/search?q%3Dkush%2Bmandi%2Brevies%26oq%3Dkush%2Bmandi%2Brevies%26gs_lcrp%3DEgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCDQyNDlqMGoxqAIAsAIA%26sourceid%3Dchrome%26ie%3DUTF-8", "_blank");  setMobileMenuOpen(false); }} className="mt-4">
               Reserve a Table
             </Button>
           </motion.div>
@@ -291,25 +300,51 @@ export default function Home() {
           <p className="text-muted-foreground max-w-2xl mx-auto">Don't just take our word for it.</p>
         </div>
 
-        <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 pb-8 -mx-6 px-6">
+        <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-5 pb-8 -mx-6 px-6">
           {REVIEWS.map((review, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="min-w-[300px] md:min-w-[400px] snap-center bg-card p-8 rounded-3xl border border-border/50 relative"
+              transition={{ delay: Math.min(i * 0.08, 0.4) }}
+              className="min-w-[300px] md:min-w-[380px] snap-center bg-card p-7 rounded-3xl border border-border/50 relative flex flex-col"
             >
-              <Quote className="absolute top-6 right-6 w-10 h-10 text-primary/10" />
-              <div className="flex gap-1 mb-6">
-                {[1,2,3,4,5].map(star => <Star key={star} className="w-4 h-4 fill-primary text-primary" />)}
+              {/* Google badge */}
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-2">
+                  <div className="w-9 h-9 rounded-full bg-primary/15 flex items-center justify-center text-sm font-bold text-primary">
+                    {review.name.charAt(0).toUpperCase()}
+                  </div>
+                  <div>
+                    <p className="font-bold text-foreground text-sm leading-tight">{review.name}</p>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      {review.badge && (
+                        <span className="text-xs text-blue-400 font-medium">{review.badge} ·</span>
+                      )}
+                      <span className="text-xs text-muted-foreground">{review.when}</span>
+                    </div>
+                  </div>
+                </div>
+                <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0 opacity-40" fill="none">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
               </div>
-              <p className="text-lg text-foreground/90 mb-8 italic">"{review.text}"</p>
-              <div>
-                <p className="font-bold text-foreground">{review.name}</p>
-                <p className="text-sm text-primary">{review.role}</p>
+
+              <div className="flex gap-1 mb-4">
+                {[1,2,3,4,5].map(star => <Star key={star} className="w-3.5 h-3.5 fill-primary text-primary" />)}
               </div>
+
+              <p className="text-sm text-foreground/85 leading-relaxed flex-1">"{review.text}"</p>
+
+              {"spend" in review && review.spend && (
+                <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border/40">
+                  Avg spend · <span className="text-foreground/70">{review.spend} per person</span>
+                </p>
+              )}
             </motion.div>
           ))}
         </div>
@@ -553,6 +588,16 @@ export default function Home() {
             <a href="#" className="hover:text-primary">Terms of Service</a>
           </div>
         </div>
+        {/* ✅ CONTACT SECTION */}
+        <section id="contact" className="text-center py-10 bg-muted">
+          <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+
+          <p className="mb-2">📞 Phone: +91 9392201156</p>
+
+          <a href="tel:+919392201156" className="call-btn">
+            📞 Call Now
+          </a>
+        </section>
       </footer>
       
     </div>
