@@ -400,7 +400,14 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">Address</h4>
-                  <p className="text-muted-foreground">Building 12&13, Sri Balaji Complex, 1st Floor,<br/>Gachibowli Rd, Hyderabad</p>
+                  <a
+                    href="https://www.google.com/maps/search/Kush+Mandi+Sri+Balaji+Complex+Gachibowli+Hyderabad"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Building 12&amp;13, Sri Balaji Complex, 1st Floor,<br/>Gachibowli Rd, Hyderabad
+                  </a>
                 </div>
               </div>
               
@@ -428,25 +435,27 @@ export default function Home() {
               </div>
             </div>
 
-            <Button size="lg" className="w-full sm:w-auto mt-4" onClick={() => window.open('https://maps.google.com', '_blank')}>
+            <Button size="lg" className="w-full sm:w-auto mt-4" onClick={() => window.open('https://www.google.com/maps/search/Kush+Mandi+Sri+Balaji+Complex+Gachibowli+Hyderabad', '_blank')}>
               Get Directions
             </Button>
           </motion.div>
           
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="h-[500px] rounded-3xl overflow-hidden relative border border-border/50 shadow-2xl"
           >
-            {/* Mock Map using Gradient Art */}
-            <GradientArt variant="map" animate={false} />
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="bg-background/80 backdrop-blur-md p-4 rounded-2xl flex flex-col items-center shadow-2xl border border-primary/20">
-                <MapPin className="w-10 h-10 text-primary mb-2" />
-                <span className="font-bold text-sm tracking-wide">KUSH MANDI</span>
-              </div>
-            </div>
+            <iframe
+              title="Kush Mandi Location"
+              src="https://maps.google.com/maps?q=Kush+Mandi+Sri+Balaji+Complex+Gachibowli+Hyderabad&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0, display: "block" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </motion.div>
         </div>
       </section>

@@ -491,7 +491,15 @@ export default function Menu() {
       <div className="fixed bottom-0 left-0 right-0 z-20 bg-background/90 backdrop-blur-xl border-t border-border/50 p-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="text-sm text-muted-foreground hidden sm:block">
-            <span className="text-foreground font-medium">Kush Mandi</span> · Building 12&13, Sri Balaji Complex, Gachibowli
+            <span className="text-foreground font-medium">Kush Mandi</span> ·{" "}
+              <a
+                href="https://www.google.com/maps/search/Kush+Mandi+Sri+Balaji+Complex+Gachibowli+Hyderabad"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                Building 12&amp;13, Sri Balaji Complex, Gachibowli
+              </a>
           </div>
           <div className="flex gap-3 w-full sm:w-auto">
             <a href="tel:+919392201156" className="flex-1 sm:flex-none">
