@@ -64,6 +64,8 @@ const FEATURES = [
   { icon: "⭐", title: "4.0 Rated", desc: "Trusted by over 100 happy diners in Gachibowli." }
 ];
 
+const RESERVE_URL = "https://www.google.com/maps/reserve/v/dine/c/GJ5F4uUUYxE?opi=89978449&source=pa&hl=en-IN";
+
 const SIGNATURE_DISHES: Dish[] = [
   { id: 1, name: "Chicken Mandi", desc: "Tender slow-cooked chicken on fragrant basmati rice, seasoned with our secret spice blend.", price: "from ₹349", variant: "chicken", img: imgFullChickenMandi },
   { id: 2, name: "Mutton Mandi", desc: "Premium mutton slow-roasted to perfection on aromatic saffron rice.", price: "from ₹679", variant: "mutton", img: imgMuttonBowl },
@@ -184,7 +186,7 @@ export default function Home() {
             <Button size="lg" className="w-full sm:w-auto" onClick={() => navigate("/menu")}>
               View Menu
             </Button>
-            <Button size="lg" variant="outline" className="w-full sm:w-auto" onClick={() => setReservationOpen(true)}>
+            <Button size="lg" variant="outline" className="w-full sm:w-auto" onClick={() => window.open(RESERVE_URL, "_blank")}>
               Reserve a Table
             </Button>
           </motion.div>
