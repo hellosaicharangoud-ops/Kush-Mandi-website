@@ -423,7 +423,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">Contact</h4>
-                  <a href="tel:+919000000000" className="text-primary hover:underline text-lg font-medium">+91 90000 00000</a>
+                  <a href="tel:+919392201156" className="text-primary hover:underline text-lg font-medium">+91 93922 01156</a>
                 </div>
               </div>
             </div>

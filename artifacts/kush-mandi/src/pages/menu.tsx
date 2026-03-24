@@ -494,7 +494,7 @@ export default function Menu() {
             <span className="text-foreground font-medium">Kush Mandi</span> · Building 12&13, Sri Balaji Complex, Gachibowli
           </div>
           <div className="flex gap-3 w-full sm:w-auto">
-            <a href="tel:+919000000000" className="flex-1 sm:flex-none">
+            <a href="tel:+919392201156" className="flex-1 sm:flex-none">
               <Button variant="outline" className="w-full">📞 Call to Order</Button>
             </a>
             <Button className="flex-1 sm:flex-none" onClick={() => navigate("/")}>
