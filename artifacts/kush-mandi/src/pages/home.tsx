@@ -12,6 +12,23 @@ import imgMuttonMandi from "@assets/1000385855_1774209331290.jpg";
 import imgExteriorNight from "@assets/1000385854_1774209331354.jpg";
 import imgExteriorSign from "@assets/1000385853_1774209331400.jpg";
 
+import imgMandiBowl from "@assets/unnamed_(66)_1774359395024.jpg";
+import imgBoatPlatter from "@assets/unnamed_(65)_1774359395080.jpg";
+import imgFullChickenMandi from "@assets/unnamed_(63)_1774359395112.jpg";
+import imgSheekh from "@assets/unnamed_(64)_1774359395143.jpg";
+import imgDragonChicken from "@assets/unnamed_(62)_1774359395177.jpg";
+import imgFishFry from "@assets/unnamed_(61)_1774359395209.jpg";
+import imgReception from "@assets/unnamed_(60)_1774359395244.jpg";
+import imgNightBuilding from "@assets/unnamed_(59)_1774359395275.jpg";
+import imgSignBoard from "@assets/unnamed_(58)_1774359395308.jpg";
+import imgMuttonBowl from "@assets/unnamed_(57)_1774359395346.jpg";
+import imgWholeChicken from "@assets/unnamed_(56)_1774359395379.jpg";
+import imgDiningRoom from "@assets/2025-03-12_1774359395409.jpg";
+import imgEntrance from "@assets/unnamed_(54)_1774359395447.jpg";
+import imgFloorSeating from "@assets/unnamed_(52)_1774359395497.jpg";
+import imgExteriorStreet from "@assets/thumbnail_1774359395557.jpeg";
+import imgDiningHall from "@assets/unnamed_(50)_1774359395613.jpg";
+
 type GradientVariant = "chicken" | "mutton" | "fish" | "prawns";
 
 interface Dish {
@@ -41,10 +58,10 @@ const FEATURES = [
 ];
 
 const SIGNATURE_DISHES: Dish[] = [
-  { id: 1, name: "Chicken Mandi", desc: "Tender slow-cooked chicken on fragrant basmati rice, seasoned with our secret spice blend.", price: "₹320", variant: "chicken", img: imgChickenMandi },
-  { id: 2, name: "Mutton Mandi", desc: "Premium mutton slow-roasted to perfection on aromatic saffron rice.", price: "₹450", variant: "mutton", img: imgMuttonMandi },
-  { id: 3, name: "Crispy Fish Fry", desc: "Golden crispy fish coated in a signature Hyderabadi masala blend, fried to perfection.", price: "₹280", variant: "fish", img: null },
-  { id: 4, name: "Signature Prawns", desc: "Jumbo prawns marinated in bold coastal spices and grilled over charcoal.", price: "₹380", variant: "prawns", img: null },
+  { id: 1, name: "Chicken Mandi", desc: "Tender slow-cooked chicken on fragrant basmati rice, seasoned with our secret spice blend.", price: "from ₹349", variant: "chicken", img: imgFullChickenMandi },
+  { id: 2, name: "Mutton Mandi", desc: "Premium mutton slow-roasted to perfection on aromatic saffron rice.", price: "from ₹679", variant: "mutton", img: imgMuttonBowl },
+  { id: 3, name: "Crispy Fish Fry", desc: "Golden crispy fish coated in a signature Hyderabadi masala blend, fried to perfection.", price: "₹399", variant: "fish", img: imgFishFry },
+  { id: 4, name: "Dragon Chicken", desc: "Fiery wok-tossed crispy chicken in a bold dragon sauce — a crowd favourite starter.", price: "₹349", variant: "prawns", img: imgDragonChicken },
 ];
 
 export default function Home() {
@@ -306,73 +323,96 @@ export default function Home() {
             <p className="text-muted-foreground max-w-2xl mx-auto">A glimpse into our warm, inviting atmosphere and rich culinary creations.</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[280px]">
-            {/* Large feature: Interior */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="col-span-2 row-span-2 rounded-2xl overflow-hidden relative group cursor-pointer"
-            >
-              <img src={imgInterior} alt="Kush Mandi Dining Area" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+          {/* ROW 1 — hero food shot + night exterior */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 auto-rows-[180px] md:auto-rows-[260px] mb-4 md:mb-5">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="col-span-2 row-span-2 rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgFullChickenMandi} alt="Full Chicken Mandi" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="font-display text-3xl font-bold text-white">Group Dining</h3>
+                <h3 className="font-display text-3xl font-bold text-white">Full Chicken Mandi</h3>
               </div>
             </motion.div>
-
-            {/* Chicken Mandi */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="rounded-2xl overflow-hidden relative group cursor-pointer"
-            >
-              <img src={imgChickenMandi} alt="Chicken Mandi" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="font-display text-xl font-bold text-white">Chicken Mandi</h3>
-              </div>
-            </motion.div>
-
-            {/* Mutton Mandi */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="rounded-2xl overflow-hidden relative group cursor-pointer"
-            >
-              <img src={imgMuttonMandi} alt="Mutton Mandi" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="font-display text-xl font-bold text-white">Mutton Mandi</h3>
-              </div>
-            </motion.div>
-
-            {/* Exterior Sign 1 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="rounded-2xl overflow-hidden relative group cursor-pointer"
-            >
-              <img src={imgExteriorNight} alt="Kush Mandi at Night" className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000" />
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgNightBuilding} alt="Kush Mandi at Night" className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <h3 className="font-display text-xl font-bold text-white">Our Location</h3>
               </div>
             </motion.div>
-
-            {/* Exterior Sign 2 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="col-span-2 md:col-span-1 rounded-2xl overflow-hidden relative group cursor-pointer"
-            >
-              <img src={imgExteriorSign} alt="Kush Mandi Arabian Kitchen" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgReception} alt="Kush Mandi Reception" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="font-display text-xl font-bold text-white">Arabian Kitchen</h3>
+                <h3 className="font-display text-xl font-bold text-white">Premium Ambiance</h3>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ROW 2 — three equal food shots */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 auto-rows-[180px] md:auto-rows-[240px] mb-4 md:mb-5">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgMandiBowl} alt="Spicy Mandi Bowl" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-xl font-bold text-white">Spicy Mandi</h3>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgMuttonBowl} alt="Mutton Mandi" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-xl font-bold text-white">Mutton Mandi</h3>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="col-span-2 md:col-span-1 rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgWholeChicken} alt="Whole Chicken Mandi" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-xl font-bold text-white">Whole Chicken Mandi</h3>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ROW 3 — starters + large interior */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 auto-rows-[180px] md:auto-rows-[240px] mb-4 md:mb-5">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgFishFry} alt="Fish Fry" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-xl font-bold text-white">Fish Fry</h3>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgSheekh} alt="Sheekh Kebab" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-xl font-bold text-white">Sheekh Kebab</h3>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="col-span-2 md:col-span-1 rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgDragonChicken} alt="Dragon Chicken" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-xl font-bold text-white">Dragon Chicken</h3>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ROW 4 — interiors + special items */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 auto-rows-[160px] md:auto-rows-[220px]">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgDiningRoom} alt="Dining Room" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-lg font-bold text-white">Dining Hall</h3>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgFloorSeating} alt="Traditional Floor Seating" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-lg font-bold text-white">Arabian Seating</h3>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgBoatPlatter} alt="Boat Platter" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-lg font-bold text-white">Boat Platter</h3>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="rounded-2xl overflow-hidden relative group cursor-pointer">
+              <img src={imgExteriorStreet} alt="Kush Mandi Exterior" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="font-display text-lg font-bold text-white">Find Us Here</h3>
               </div>
             </motion.div>
           </div>
