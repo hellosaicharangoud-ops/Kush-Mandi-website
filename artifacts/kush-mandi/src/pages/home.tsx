@@ -544,7 +544,7 @@ export default function Home() {
         <div className="relative z-10 text-center max-w-3xl mx-auto px-6">
           <h2 className="font-display text-4xl md:text-6xl font-bold mb-6 text-white">Craving Mandi?<br/>Let's Serve You Today.</h2>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-10">
-            <Button size="lg" onClick={() => setReservationOpen(true)}>Book a Table</Button>
+            <Button size="lg" onClick={() => window.open("https://www.google.com/maps/reserve/v/dine/c/GJ5F4uUUYxE?opi=89978449&gei=_cfCacCgJb-SseMPjNTG0AQ&source=pa&hl=en-IN&gei=_cfCacCgJb-SseMPjNTG0AQ&sourceurl=https://www.google.com/search?q%3Dkush%2Bmandi%2Brevies%26oq%3Dkush%2Bmandi%2Brevies%26gs_lcrp%3DEgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCDQyNDlqMGoxqAIAsAIA%26sourceid%3Dchrome%26ie%3DUTF-8", "_blank")}>Book a Table</Button>
             <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white hover:text-black">Order Online</Button>
           </div>
         </div>
